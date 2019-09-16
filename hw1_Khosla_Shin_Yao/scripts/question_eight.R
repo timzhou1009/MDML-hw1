@@ -18,14 +18,12 @@ ggplot(data = taxi_data) + geom_point(mapping = aes(x = total_distance, y = tota
 
 ggsave("figures/question_eight_distance.png")
 
-ggplot(data = taxi_data) + geom_point(mapping = aes(x = total_time_with_passengers, y = total_passangers))
+taxi_data <- readr::read_csv("data_hw1/question_six.csv")
 
-ggsave("figures/question_eight_Shin.png")
-
-ggplot(data = taxi_data) + geom_point(mapping = aes(x = total_time_with_passengers, y = total_trips))
+ggplot(data = taxi_data) + geom_bar(mapping = aes(x = hour, y = total_trips),stat = "identity")
 
 ggsave("figures/question_eight_Khosla_Devin.png")
 
-ggplot(data = taxi_data) + geom_point(mapping = aes(x = total_passangers, y = total_trips))
+ggsave("figures/question_eight_Shin.png")
 
 ggsave("figures/question_eight_Yao.png")

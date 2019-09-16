@@ -1,6 +1,7 @@
 library(tidyverse)
 
 taxi_data <- readr::read_csv("data_hw1/joined_taxi_data.csv")
+taxi_data <- filter(taxi_data, format(taxi_data$pickup_datetime,'%d')== "15")
 
 total_passengers_picked_up <- 
   taxi_data %>% group_by(hack_license,hour = lubridate::hour(pickup_datetime)) %>% summarise(total_passengers_picked_up = sum(passenger_count))
