@@ -24,6 +24,6 @@ ggplot(data = taxi_data) + geom_bar(mapping = aes(x = hour, y = total_trips),sta
 
 ggsave("figures/question_eight_Khosla_Devin.png")
 
-ggsave("figures/question_eight_Shin_Jeeoen.png")
+ggsave("figures/question_eight_Shin_Jeewoen.png")
 
 ggsave("figures/question_eight_Zhou_Zixuan.png")
