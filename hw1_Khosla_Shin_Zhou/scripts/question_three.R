@@ -14,7 +14,7 @@ sum(is.na(trips$dropoff_longitude))
 
 # I find that there are NA's in these columns. There are many in the store_and_fwd_flag column and 3 in the dropoff_latitude and 3 in the dropoff_longitude. When we look at the data dictionary, we can see that the store_and_fwd_flag is an unkown attribute. Since most of these are NA, it makes sense to simply drop this column. 
 
-trips <- trips[,-5]
+trips <- trips[,-6]
 
 sum(is.na(fares))
 
