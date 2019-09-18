@@ -26,6 +26,6 @@ final <- final %>%
   group_by(hack_license,hour) %>%
   summarise(total_time_with_passengers = sum(proportion*trip_time_in_secs),
             miles_with_passengers = sum(proportion*trip_distance),
-            amount = sum(proportion*amount))
+            earnings = sum(proportion*amount))
 
 write.csv(final, file = "data_hw1/question_seven.csv")
