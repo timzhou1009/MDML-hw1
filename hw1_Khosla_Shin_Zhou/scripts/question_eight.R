@@ -24,6 +24,13 @@ ggplot(data = taxi_data) + geom_bar(mapping = aes(x = hour, y = total_trips),sta
 
 ggsave("figures/question_eight_Khosla_Devin.png")
 
+sub_data = group_by(taxi_data, hour) %>% 
+  summarize(sum_passengers = sum(total_passengers_picked_up) )
+p <- ggplot(data=sub_data, aes(x=hour, y=sum_passengers))
+p + geom_bar(stat = "identity") + xlab("Hour") + ylab("Total number of passengers") + 
+  ggtitle("Total number of passengers picked up in each hour on Aug. 15") +
+  scale_x_continuous(breaks=c(0,4,8,12,16,20,24), labels=c("0","4","8","12","16","20","24"))
+
 ggsave("figures/question_eight_Shin_Jeewoen.png")
 
 ggsave("figures/question_eight_Zhou_Zixuan.png")

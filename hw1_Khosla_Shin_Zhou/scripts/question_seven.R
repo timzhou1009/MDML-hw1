@@ -5,15 +5,12 @@ library(lubridate)
 taxi_data <- read_csv("data_hw1/joined_taxi_data.csv")
 taxi_data <- taxi_data %>% mutate(amount = tip_amount + fare_amount)
 
-taxi_data$pickup_datetime <- as.POSIXct(taxi_data$pickup_datetime, tz = "America/New_York")
-taxi_data$dropoff_datetime <- as.POSIXct(taxi_data$dropoff_datetime, tz = "America/New_York")
+taxi_data$pickup_datetime <- as.POSIXct(as.POSIXlt(taxi_data$pickup_datetime, tz = "America/New_York"))
+taxi_data$dropoff_datetime <- as.POSIXct(as.POSIXlt(taxi_data$dropoff_datetime, tz = "America/New_York"))
 
 taxi_data <- filter(taxi_data, format(taxi_data$pickup_datetime,'%d') == "15")
 
 taxi_data2 <- crossing(taxi_data,hour = c(0:23))
-
-test2a <- filter(taxi_data, hour(taxi_data$pickup_datetime) != hour(taxi_data$dropoff_datetime))
-test2 <- filter(taxi_data2, hour(taxi_data2$pickup_datetime) != hour(taxi_data2$dropoff_datetime))
 
 final <- taxi_data2 %>% mutate(secondsPU = 60*minute(pickup_datetime)+second(pickup_datetime),secondsDO = 60*minute(dropoff_datetime)+second(dropoff_datetime))
 

@@ -3,6 +3,11 @@ library(tidyverse)
 trips <- read.csv("data_hw1/question_two_trips.csv")
 fares <- read.csv("data_hw1/question_two_fares.csv")
 
+fares$pickup_datetime <- as.POSIXct(as.POSIXlt(fares$pickup_datetime, tz = "America/New_York"))
+
+trips$pickup_datetime <- as.POSIXct(as.POSIXlt(trips$pickup_datetime, tz = "America/New_York"))
+trips$dropoff_datetime <- as.POSIXct(as.POSIXlt(trips$dropoff_datetime, tz = "America/New_York"))
+
 sum(is.na(trips$store_and_fwd_flag))
 sum(is.na(trips$dropoff_latitude))
 sum(is.na(trips$dropoff_longitude))

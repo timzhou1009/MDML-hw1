@@ -1,6 +1,9 @@
 library(tidyverse)
 
 taxi_data <- readr::read_csv("data_hw1/joined_taxi_data.csv")
+taxi_data$pickup_datetime <- as.POSIXct(as.POSIXlt(taxi_data$pickup_datetime, tz = "America/New_York"))
+taxi_data$dropoff_datetime <- as.POSIXct(as.POSIXlt(taxi_data$dropoff_datetime, tz = "America/New_York"))
+
 taxi_data <- filter(taxi_data, format(taxi_data$pickup_datetime,'%d')== "15")
 
 total_trips <- taxi_data %>% group_by(medallion) %>% summarise(total_trips=n())
