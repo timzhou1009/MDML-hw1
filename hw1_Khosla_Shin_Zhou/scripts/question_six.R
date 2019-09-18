@@ -9,7 +9,7 @@ taxi_data <- filter(taxi_data, format(taxi_data$pickup_datetime,'%d')== "15")
 total_passengers_picked_up <- 
   taxi_data %>% group_by(hack_license,hour = lubridate::hour(pickup_datetime)) %>% summarise(total_passengers_picked_up = sum(passenger_count))
 
-total_trips <- 
+trips_started <- 
   taxi_data  %>% group_by(hack_license,hour = lubridate::hour(pickup_datetime)) %>% summarise(total_trips=n())
 
 test <- crossing(unique(taxi_data$hack_license),c(0:23)) 
