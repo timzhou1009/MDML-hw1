@@ -33,4 +33,8 @@ p + geom_bar(stat = "identity") + xlab("Hour") + ylab("Total number of passenger
 
 ggsave("figures/question_eight_Shin_Jeewoen.png")
 
+taxi_data2 <- readr::read_csv("data_hw1/question_seven.csv")
+
+ggplot(data = taxi_data2) + geom_point(mapping = aes(x = hour, y = earnings)) + ggtitle("Earnings regarding each hour") + xlab("Hour") + ylab("Earnings")
+
 ggsave("figures/question_eight_Zhou_Zixuan.png")
