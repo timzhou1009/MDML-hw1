@@ -68,6 +68,12 @@ trips <- filter(trips, trips$trip_time_in_secs > 0)
 # I find that there are some trip passenger counts which are negative and 0 so I will remove them.
 trips <- filter(trips, trips$passenger_count > 0)
 
+#I find that there is one unsually high trip time in seconds so I will remove it. 
+trips <- filter(trips, trips$trip_time_in_secs <60000)
+
+#I find tht some trip distance's are impossible according to the trip time so I will remove them
+trips <- filter(trips, trips$trip_distance<=100)
+
 write.csv(fares, file = "data_hw1/question_three_fares.csv")
 write.csv(trips, file = "data_hw1/question_three_trips.csv")
 
